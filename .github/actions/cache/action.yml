@@ -1,0 +1,17 @@
+name: Restore Cache
+description: Cache Python dependencies and virtual environments
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cache/pip
+          .tox
+          .venv
+          .uv_cache
+        key: |
+          ${{ runner.os }}-python-${{ hashFiles('**/pyproject.toml', '**/tox.ini', '**/uv.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-python-
