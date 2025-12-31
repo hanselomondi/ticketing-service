@@ -7,7 +7,6 @@ build-backend = "setuptools.build_meta"
 version_scheme = "only-version"
 local_scheme = "no-local-version"
 
-
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["ticketing_service", "ticketing_service.*", "bin"]
@@ -150,7 +149,6 @@ docstring-code-format = true
 [tool.coverage.run]
 branch = true
 
-
 [tool.coverage.report]
 fail_under = 100
 show_missing = true
@@ -160,6 +158,9 @@ omit = [
     "ticketing_service/drf_spec_extensions/**"
 ]
 
+[tool.coverage.html]
+directory = "coverage"
+
 
 [tool.pyright]
 exclude = [
@@ -167,3 +168,10 @@ exclude = [
     "**/__pycache__",
     "docs/*",
 ]
+
+
+[tool.uv.sources]
+ticketing_service = { path = "." }
+
+[tool.uv.pip]
+prerelease = "allow"
